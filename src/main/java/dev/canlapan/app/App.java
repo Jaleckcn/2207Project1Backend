@@ -5,6 +5,7 @@ import dev.canlapan.entities.Complaint;
 import dev.canlapan.entities.Meeting;
 import dev.canlapan.entities.User;
 import dev.canlapan.handlers.complaint.CreateComplaintHandler;
+import dev.canlapan.handlers.complaint.GetAllComplaintsHandler;
 import dev.canlapan.services.ComplaintService;
 import dev.canlapan.services.ComplaintServiceImpl;
 import io.javalin.Javalin;
@@ -28,8 +29,13 @@ public class App {
             config.enableCorsForAllOrigins();
         });
 
-        //Creating a complaint
         CreateComplaintHandler createComplaintHandler = new CreateComplaintHandler();
+        GetAllComplaintsHandler getAllComplaintsHandler = new GetAllComplaintsHandler();
+
+        //Creating a complaint
         app.post("/complaint",createComplaintHandler);
+        //Getting all complaints
+        app.get("/complaints",getAllComplaintsHandler);
+
     }
 }
