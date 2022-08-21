@@ -11,21 +11,20 @@ public class UpdateSpecificComplaintHandler implements Handler {
 
     @Override
     public void handle(@NotNull Context ctx) throws Exception {
-        int complaintId = Integer.parseInt(ctx.pathParam("complaint_id"));
+        int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
         Complaint temp = App.complaintService.retrieveComplaintById(complaintId);
-
+        System.out.println(complaintId);
         if(temp == null){
             ctx.status(404);
             ctx.result("Complaint ID " + complaintId + " not found");
             return;
-        }else{
-            ctx.status();
-            ctx.result("A complaint has been updated");
         }
+        ctx.status(200);
 
         String complaintJSON = ctx.body();
         Gson gson = new Gson();
         Complaint complaint = gson.fromJson(complaintJSON, Complaint.class);
+        System.out.println(complaint);
         Complaint updateComplaint = App.complaintService.updateComplaint(complaintId, complaint);
         String json = gson.toJson(updateComplaint);
         ctx.result(json);

@@ -17,6 +17,10 @@ public class Meeting {
         this.summary = summary;
     }
 
+    public Meeting() {
+
+    }
+
     public int getMeetingId() {
         return meetingId;
     }

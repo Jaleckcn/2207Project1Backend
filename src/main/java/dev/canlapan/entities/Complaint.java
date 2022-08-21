@@ -4,16 +4,19 @@ public class Complaint {
 
     private int complaintId;
 
+    private String fname;
+    private String lname;
     private String email;
 
     private String description;
-
     private Status status;
 
-    private int meetingId; //meeting ID the complaint COULD be tied to
+    private int meetingId;
 
-    public Complaint(int complaintId, String email, String description, Status status, int meetingId) {
+    public Complaint(int complaintId, String fname, String lname, String email, String description, Status status, int meetingId) {
         this.complaintId = complaintId;
+        this.fname = fname;
+        this.lname = lname;
         this.email = email;
         this.description = description;
         this.status = status;
@@ -32,6 +35,22 @@ public class Complaint {
         this.complaintId = complaintId;
     }
 
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -39,6 +58,7 @@ public class Complaint {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getDescription() {
         return description;
     }
@@ -67,6 +87,8 @@ public class Complaint {
     public String toString() {
         return "Complaint{" +
                 "complaintId=" + complaintId +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
                 ", email='" + email + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
