@@ -13,6 +13,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User registerUser(User user) {
+        if(user.getFname().length()==0){
+            throw new RuntimeException("Please enter your first name");
+        }
+        if(user.getLname().length()==0){
+            throw new RuntimeException("Please enter your last name");
+        }
         if(user.getUsername().length() < 5){
             throw new RuntimeException("Username should be longer than 5 characters");
         }

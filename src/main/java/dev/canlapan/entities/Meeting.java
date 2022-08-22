@@ -6,7 +6,7 @@ public class Meeting {
 
     private String address; //address meeting will be held
 
-    private int time;//time meeting will be held
+    private int time;//date and time meeting will be held
 
     private String summary; //description of what meeting will cover
 

@@ -2,8 +2,10 @@ package dev.canlapan.services;
 
 import dev.canlapan.entities.Complaint;
 import dev.canlapan.daos.ComplaintDAO;
+import dev.canlapan.entities.Status;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ComplaintServiceImpl implements ComplaintService {
 
@@ -25,6 +27,14 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public List<Complaint> getAllComplaints() {
         return this.complaintDAO.getAllComplaints();
+    }
+
+    @Override
+    public List<Complaint> getStatus(Status status) {
+        List<Complaint> temp = complaintDAO.getAllComplaints();
+
+        List<Complaint> complaintByStatus = temp.stream().filter(complaint -> complaint.getStatus()==status).collect(Collectors.toList());
+        return complaintByStatus;
     }
 
     public Complaint updateComplaint(int complaintId, Complaint complaint){
