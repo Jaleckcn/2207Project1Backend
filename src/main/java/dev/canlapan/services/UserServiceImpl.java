@@ -1,8 +1,7 @@
 package dev.canlapan.services;
 
-import dev.canlapan.daos.UserDAO;
-import dev.canlapan.daos.UserDAOPostgres;
 import dev.canlapan.entities.User;
+import dev.canlapan.daos.UserDAO;
 
 public class UserServiceImpl implements UserService{
 

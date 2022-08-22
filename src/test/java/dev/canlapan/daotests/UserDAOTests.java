@@ -37,10 +37,19 @@ public class UserDAOTests {
     @Test
     @Order(1)
     void create_user_test(){
-        User user = new User(0,"Jaleckcn","therightpassword", Role.CONSTITUENT);
+        User user = new User(0,"Jalec","Canlapan","Jaleckcn","therightpassword", Role.COUNCIL);
         User savedUser = this.userDAO.createUser(user);
         Assertions.assertNotEquals(0,savedUser.getUserId());
     }
+
+    @Test
+    @Order(2)
+    void get_user_by_username(){
+        User user = userDAO.getUserByUsername("Jaleckcn");
+        System.out.println(user);
+        Assertions.assertEquals("Jalec",user.getFname());
+    }
+
 
 //    @AfterAll // Runs after the last tests finishes
 //    //If you don't want the table to be deleted, just comment this section out

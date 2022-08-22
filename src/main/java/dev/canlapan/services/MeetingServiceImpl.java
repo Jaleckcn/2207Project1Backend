@@ -1,8 +1,7 @@
 package dev.canlapan.services;
 
-import dev.canlapan.daos.MeetingDAO;
-import dev.canlapan.daos.MeetingDAOPostgres;
 import dev.canlapan.entities.Meeting;
+import dev.canlapan.daos.MeetingDAO;
 
 import java.util.List;
 

@@ -1,11 +1,16 @@
 package dev.canlapan.app;
 
+import com.google.gson.Gson;
 import dev.canlapan.daos.ComplaintDAOPostgres;
 import dev.canlapan.daos.MeetingDAOPostgres;
+import dev.canlapan.daos.UserDAO;
 import dev.canlapan.daos.UserDAOPostgres;
+import dev.canlapan.dtos.LoginCredentials;
 import dev.canlapan.entities.Complaint;
 import dev.canlapan.entities.Meeting;
 import dev.canlapan.entities.User;
+import dev.canlapan.exceptions.NoEmployeeFoundException;
+import dev.canlapan.exceptions.PasswordMismatchException;
 import dev.canlapan.handlers.complaint.CreateComplaintHandler;
 import dev.canlapan.handlers.complaint.GetAllComplaintsHandler;
 import dev.canlapan.handlers.complaint.GetComplaintByIdHandler;
@@ -15,8 +20,6 @@ import dev.canlapan.handlers.meeting.GetAllMeetingsHandler;
 import dev.canlapan.handlers.user.CreateUserHandler;
 import dev.canlapan.services.*;
 import io.javalin.Javalin;
-import io.javalin.http.Handler;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +31,9 @@ public class App {
 
     public static ComplaintService complaintService = new ComplaintServiceImpl(new ComplaintDAOPostgres());
     public static MeetingService meetingService = new MeetingServiceImpl(new MeetingDAOPostgres());
-
     public static UserService userService = new UserServiceImpl(new UserDAOPostgres());
+
+    public static LoginService loginService = new LoginServiceImpl(new UserDAOPostgres());
 
     public static void main(String[] args) {
         Javalin app = Javalin.create( config-> {
@@ -60,9 +64,30 @@ public class App {
         app.get("/meetings",getAllMeetingsHandler);
 
         CreateUserHandler createUserHandler = new CreateUserHandler();
-        //creating a new user. All registered users will have Constituent status
-        //But can be updated to COUNCIL status if member of council
+        //creating a new user. All registered users will have COUNCIL status for now
+        //But perhaps in the future, we could have someone verify user before activating account
         app.post("/user",createUserHandler);
+
+        app.post("/login",ctx -> {
+           String body = ctx.body();
+           Gson gson = new Gson();
+
+           LoginCredentials credentials = gson.fromJson(body, LoginCredentials.class);
+
+           User user = loginService.validateUser(credentials.getUsername(), credentials.getPassword());
+           String userJSON = gson.toJson(user);
+           ctx.result(userJSON);
+
+        });
+        //Exceptions implemented to check if valid username or password
+        app.exception(PasswordMismatchException.class,(exception, ctx) -> {
+            ctx.status(422);
+            ctx.result("Password did not match");
+        });
+        app.exception(NoEmployeeFoundException.class,(exception, ctx) -> {
+            ctx.status(404);
+            ctx.result("User not found");
+        });
 
         app.start();
     }

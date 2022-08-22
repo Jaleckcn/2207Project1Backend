@@ -1,8 +1,7 @@
 package dev.canlapan.services;
 
-import dev.canlapan.daos.ComplaintDAO;
-import dev.canlapan.daos.ComplaintDAOPostgres;
 import dev.canlapan.entities.Complaint;
+import dev.canlapan.daos.ComplaintDAO;
 
 import java.util.List;
 

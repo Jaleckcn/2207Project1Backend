@@ -4,7 +4,6 @@ import dev.canlapan.entities.Complaint;
 import dev.canlapan.entities.Status;
 import dev.canlapan.utils.ConnectionUtil;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

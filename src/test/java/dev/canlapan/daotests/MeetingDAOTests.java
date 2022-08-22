@@ -4,8 +4,6 @@ package dev.canlapan.daotests;
 import dev.canlapan.daos.MeetingDAO;
 import dev.canlapan.daos.MeetingDAOPostgres;
 import dev.canlapan.entities.Meeting;
-import dev.canlapan.entities.Role;
-import dev.canlapan.entities.User;
 import dev.canlapan.utils.ConnectionUtil;
 import org.junit.jupiter.api.*;
 
@@ -53,10 +51,10 @@ public class MeetingDAOTests {
     @Test
     @Order(2)
     void get_all_meetings_test(){
-        Meeting meeting1 = new Meeting(0,"UA Town Hall", 800, "Forum to address issues petitioned by the community");
-        Meeting meeting2 = new Meeting(0,"UA Town Hall", 1200, "Forum to address issues petitioned by the community");
-        Meeting meeting3 = new Meeting(0,"UA Town Hall", 1300, "Forum to address issues petitioned by the community");
-        Meeting meeting4 = new Meeting(0,"UA Town Hall", 1930, "Forum to address issues petitioned by the community");
+        Meeting meeting1 = new Meeting(0,"UA Town Hall", 800, "Forum addressing complaints 1-10");
+        Meeting meeting2 = new Meeting(0,"UA Town Hall", 1200, "Forum addressing complaints 11,12,14 and 15");
+        Meeting meeting3 = new Meeting(0,"UA Town Hall", 1300, "Addressing complaints TBD");
+        Meeting meeting4 = new Meeting(0,"UA Town Hall", 1930, "Open floor for constituents to directly address the council");
 
         meetingDAO.createMeeting(meeting1);
         meetingDAO.createMeeting(meeting2);
