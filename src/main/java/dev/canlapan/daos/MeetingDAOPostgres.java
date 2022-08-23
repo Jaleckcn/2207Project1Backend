@@ -19,7 +19,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
 
             //field values set using our front end
             preparedStatement.setString(1, meeting.getAddress());
-            preparedStatement.setInt(2, meeting.getTime());
+            preparedStatement.setLong(2, meeting.getTime());
             preparedStatement.setString(3, meeting.getSummary());
 
             preparedStatement.execute();
@@ -49,7 +49,7 @@ public class MeetingDAOPostgres implements MeetingDAO{
                 Meeting meeting = new Meeting();
                 meeting.setMeetingId(rs.getInt("meeting_id"));
                 meeting.setAddress(rs.getString("address"));
-                meeting.setTime(rs.getInt("time"));
+                meeting.setTime(rs.getLong("time"));
                 meeting.setSummary(rs.getString("summary"));
                 meetingList.add(meeting);
 

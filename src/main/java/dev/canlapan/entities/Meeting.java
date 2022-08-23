@@ -6,11 +6,11 @@ public class Meeting {
 
     private String address; //address meeting will be held
 
-    private int time;//date and time meeting will be held
+    private long time;//date and time meeting will be held
 
     private String summary; //description of what meeting will cover
 
-    public Meeting(int meetingId, String address, int time, String summary) {
+    public Meeting(int meetingId, String address, long time, String summary) {
         this.meetingId = meetingId;
         this.address = address;
         this.time = time;
@@ -37,11 +37,11 @@ public class Meeting {
         this.address = address;
     }
 
-    public int getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

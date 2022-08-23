@@ -42,19 +42,19 @@ public class MeetingDAOTests {
     @Test
     @Order(1)
     void create_meeting_test(){
-        Meeting meeting = new Meeting(0,"UA Town Hall", 1800, "Forum to address issues petitioned by the community");
+        Meeting meeting = new Meeting(0,"UA Town Hall", 1233333333, "Forum to address issues petitioned by the community");
         Meeting savedMeeting = this.meetingDAO.createMeeting(meeting);
-        Assertions.assertEquals(1800,savedMeeting.getTime());
+        Assertions.assertEquals(1233333333,savedMeeting.getTime());
         System.out.println(meeting);
     }
 
     @Test
     @Order(2)
     void get_all_meetings_test(){
-        Meeting meeting1 = new Meeting(0,"UA Town Hall", 800, "Forum addressing complaints 1-10");
-        Meeting meeting2 = new Meeting(0,"UA Town Hall", 1200, "Forum addressing complaints 11,12,14 and 15");
-        Meeting meeting3 = new Meeting(0,"UA Town Hall", 1300, "Addressing complaints TBD");
-        Meeting meeting4 = new Meeting(0,"UA Town Hall", 1930, "Open floor for constituents to directly address the council");
+        Meeting meeting1 = new Meeting(0,"UA Town Hall", 123456, "Forum addressing complaints 1-10");
+        Meeting meeting2 = new Meeting(0,"UA Town Hall", 1234567, "Forum addressing complaints 11,12,14 and 15");
+        Meeting meeting3 = new Meeting(0,"UA Town Hall", 12345678, "Addressing complaints TBD");
+        Meeting meeting4 = new Meeting(0,"UA Town Hall", 123456789, "Open floor for constituents to directly address the council");
 
         meetingDAO.createMeeting(meeting1);
         meetingDAO.createMeeting(meeting2);
