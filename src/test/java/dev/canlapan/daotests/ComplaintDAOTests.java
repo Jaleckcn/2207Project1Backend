@@ -41,6 +41,10 @@ public class ComplaintDAOTests {
     }
 
     @Test
+    void sample_test(){
+        throw new RuntimeException("error");
+    }
+    @Test
     @Order(1)
     void create_complaint_test(){
         //Complaint id should be auto-incrementing
@@ -52,8 +56,10 @@ public class ComplaintDAOTests {
     @Test
     @Order(2)
     void get_complaint_by_id(){
-        Complaint complaint = complaintDAO.getComplaintById(1);
-        Assertions.assertEquals("UNREVIEWED",complaint.getStatus().name());
+        Complaint complaint = new Complaint(0,"Toshinori","Yagi","plusultra@ua.edu","Weird explodey kid keeps breaking the peace and yelling die all the time.", Status.UNREVIEWED,-1);
+        Complaint savedComplaint = this.complaintDAO.createComplaint(complaint);
+        Complaint complaint2 = complaintDAO.getComplaintById(savedComplaint.getComplaintId());
+        Assertions.assertEquals("UNREVIEWED",complaint2.getStatus().name());
     }
 
     @Test
