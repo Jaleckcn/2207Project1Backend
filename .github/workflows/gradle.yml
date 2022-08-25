@@ -17,12 +17,13 @@ permissions:
   contents: read
 
 jobs:
+  env:
+    AZURE_SQL_DB_P1: ${{ env.DB_CONNECTION }}
   build:
 
 
     runs-on: ubuntu-latest
-    env:
-      AZURE_SQL_DB_P1: 	${{ env.DB_CONNECTION }}
+
 
     steps:
     - uses: actions/checkout@v3
