@@ -8,7 +8,7 @@ public class Meeting {
 
     private long time;//date and time meeting will be held
 
-    private String summary; //description of what meeting will cover
+    private String summary;  //description of what meeting will cover
 
     public Meeting(int meetingId, String address, long time, String summary) {
         this.meetingId = meetingId;
