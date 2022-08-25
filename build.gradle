@@ -25,3 +25,15 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+//can paste this into any build.gradle
+//just remember to change the address ie dev.canlapan.app.App
+task customFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'dev.canlapan.app.App'
+    }
+    baseName = 'P1-Town-Complaint-Submission-App'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

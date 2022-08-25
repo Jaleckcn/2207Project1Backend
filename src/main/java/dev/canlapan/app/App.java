@@ -3,7 +3,6 @@ package dev.canlapan.app;
 import com.google.gson.Gson;
 import dev.canlapan.daos.ComplaintDAOPostgres;
 import dev.canlapan.daos.MeetingDAOPostgres;
-import dev.canlapan.daos.UserDAO;
 import dev.canlapan.daos.UserDAOPostgres;
 import dev.canlapan.dtos.LoginCredentials;
 import dev.canlapan.entities.Complaint;

@@ -12,7 +12,6 @@ import dev.canlapan.services.UserService;
 import dev.canlapan.services.UserServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;

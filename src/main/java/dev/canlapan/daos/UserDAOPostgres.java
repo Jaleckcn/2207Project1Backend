@@ -1,7 +1,6 @@
 package dev.canlapan.daos;
 
 import dev.canlapan.entities.Role;
-import dev.canlapan.entities.Status;
 import dev.canlapan.entities.User;
 import dev.canlapan.utils.ConnectionUtil;
 
