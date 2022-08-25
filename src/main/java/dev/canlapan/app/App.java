@@ -20,6 +20,8 @@ import dev.canlapan.handlers.meeting.GetAllMeetingsHandler;
 import dev.canlapan.handlers.user.CreateUserHandler;
 import dev.canlapan.services.*;
 import io.javalin.Javalin;
+import io.javalin.http.Handler;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +90,21 @@ public class App {
             ctx.status(404);
             ctx.result("User not found");
         });
+
+        Handler updateComplaintMeetingIdHandler = ctx -> {
+            int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
+            int meetingId = Integer.parseInt(ctx.pathParam("meetingId"));
+
+            Complaint tempComplaint = App.complaintService.retrieveComplaintById(complaintId);
+            tempComplaint.setMeetingId(meetingId);
+            Complaint complaint1 = App.complaintService.updateComplaint(complaintId,tempComplaint);
+            Gson gson = new Gson();
+            String json = gson.toJson(complaint1);
+            ctx.result(json);
+        };
+
+        app.put("/complaints/{complaintId}/{meetingId}",updateComplaintMeetingIdHandler);
+
 
         app.start();
     }

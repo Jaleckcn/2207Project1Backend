@@ -11,6 +11,7 @@ public class UpdateSpecificComplaintHandler implements Handler {
 
     @Override
     public void handle(@NotNull Context ctx) throws Exception {
+        System.out.println(ctx.pathParam("complaintId"));
         int complaintId = Integer.parseInt(ctx.pathParam("complaintId"));
         Complaint temp = App.complaintService.retrieveComplaintById(complaintId);
         System.out.println(complaintId);
