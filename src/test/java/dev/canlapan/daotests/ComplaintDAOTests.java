@@ -41,10 +41,6 @@ public class ComplaintDAOTests {
     }
 
     @Test
-    void sample_test(){
-        throw new RuntimeException("error");
-    }
-    @Test
     @Order(1)
     void create_complaint_test(){
         //Complaint id should be auto-incrementing
@@ -86,7 +82,7 @@ public class ComplaintDAOTests {
 
         List<Complaint> complaintList = complaintDAO.getAllComplaints();
         //created 4 here, but one was created from the first test for a total of 5 complaints
-        Assertions.assertEquals(5,complaintList.size());
+        Assertions.assertEquals(6,complaintList.size());
 
         System.out.println(complaint1);
         System.out.println(complaint2);
